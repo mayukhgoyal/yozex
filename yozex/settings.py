@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 from django.conf import settings
-#import dj_database_url
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,7 +30,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['http://example.com']
+#CSRF_TRUSTED_ORIGINS = ['http://example.com']
 # Application definition
 
 INSTALLED_APPS = [
@@ -143,15 +143,27 @@ REST_FRAMEWORK = {
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 #server database
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'yozex',
-        'USER': 'yozex',
-        'PASSWORD':'GiKzrTJEd4Az',
-        'HOST':'127.0.0.1',
-        'PORT':'5432',
-    }
+    'default': dj_database_url.config(conn_max_age=600)
+ 
+    # {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'd6bt24t684e7o4',
+    #     'USER': 'hlloexkzwilghy',
+    #     'PASSWORD':'948f1879ac3db8f94b2726ec2e9a3d1ca6a8203298d627493e76b49d9155ade2',
+    #     'HOST':'ec2-3-223-169-166.compute-1.amazonaws.com',
+    #     'PORT':'5432',
+    # }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'yozex',
+#         'USER': 'yozex',
+#         'PASSWORD':'GiKzrTJEd4Az',
+#         'HOST':'127.0.0.1',
+#         'PORT':'5432',
+#     }
+# }
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
