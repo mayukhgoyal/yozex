@@ -1,0 +1,97 @@
+{% extends 'layout/inner.html' %}
+{% load static %}
+{% block content %}
+<div class="page-body">
+    <div class="container-fluid">
+      <div class="page-header">
+        <div class="row">
+          <div class="col-sm-6">
+            <h3>User Management</h3>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/admin/dashboard
+                
+                ">Home</a></li>
+              <li class="breadcrumb-item">User Management</li>
+              <li class="breadcrumb-item active">Add User</li>
+            </ol>
+          </div>
+          <div class="col-sm-6">
+            <!-- Bookmark Start-->
+            <div class="bookmark">
+              <ul>
+                <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Tables"><i data-feather="inbox"></i></a></li>
+                <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Chat"><i data-feather="message-square"></i></a></li>
+                <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Icons"><i data-feather="command"></i></a></li>
+                <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Learning"><i data-feather="layers"></i></a></li>
+                <li><a href="javascript:void(0)"><i class="bookmark-search" data-feather="star"></i></a>
+                  <form class="form-inline search-form">
+                    <div class="form-group form-control-search">
+                      <input type="text" placeholder="Search..">
+                    </div>
+                  </form>
+                </li>
+              </ul>
+            </div>
+            <!-- Bookmark Ends-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header pb-0">
+              <h5>User Management</h5>
+            </div>
+            <div class="card-body">
+            <form class="needs-validation" method="POST" action="user-add">
+                {% csrf_token %}
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label" for="validationCustom01">First name</label>
+                        <input class="form-control" id="validationCustom01" type="text" name="first_name" required="">
+                        <div class="valid-feedback">Looks good!</div>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label" for="validationCustom02">Last name</label>
+                        <input class="form-control" id="validationCustom02" type="text" name="last_name" required="">
+                        <div class="valid-feedback">Looks good!</div>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label class="form-label" for="validationCustomUsername">Enter Email</label>
+                        <div class="input-group">
+                          <input class="form-control" id="validationCustomUsername" type="text" name="email" aria-describedby="inputGroupPrepend" required="">
+                          <div class="invalid-feedback">Please choose a Email.</div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label class="form-label" for="validationCustomUsername">Enter Mobile</label>
+                        <div class="input-group">
+                          <input class="form-control" id="validationCustomUsername" type="text" name="mobile" aria-describedby="inputGroupPrepend" required="">
+                          <div class="invalid-feedback">Please choose a Mobile.</div>
+                        </div>
+                      </div>
+                      
+                      <div class="mb-3">
+                      <div class="form-check">
+                        <div class="checkbox p-0">
+                          <input class="form-check-input" id="invalidCheck" type="checkbox" required="">
+                          <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
+                        </div>
+                        <div class="invalid-feedback">You must agree before submitting.</div>
+                        <button class="btn btn-primary" type="submit">Submit form</button>
+                      </div>
+                        </div>
+                </div>
+            </form>
+           
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Container-fluid Ends-->
+  </div>
+{% endblock content %}

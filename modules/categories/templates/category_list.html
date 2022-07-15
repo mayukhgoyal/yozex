@@ -1,0 +1,104 @@
+{% extends 'layout/inner.html' %}
+
+{% load static %}
+{% block content %}
+<div class="page-body">
+    <div class="container-fluid">
+      <div class="page-header">
+        <div class="row">
+          <div class="col-sm-6">
+            <h3>Category</h3>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
+              <li class="breadcrumb-item">Category</li>
+              <li class="breadcrumb-item active">Category List</li>
+            </ol>
+          </div>
+          <div class="col-sm-6">
+            <!-- Bookmark Start-->
+            <div class="bookmark">
+              <ul>
+                <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Tables"><i data-feather="inbox"></i></a></li>
+                <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Chat"><i data-feather="message-square"></i></a></li>
+                <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Icons"><i data-feather="command"></i></a></li>
+                <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Learning"><i data-feather="layers"></i></a></li>
+                <li><a href="javascript:void(0)"><i class="bookmark-search" data-feather="star"></i></a>
+                  <form class="form-inline search-form">
+                    <div class="form-group form-control-search">
+                      <input type="text" placeholder="Search..">
+                    </div>
+                  </form>
+                </li>
+              </ul>
+            </div>
+            <!-- Bookmark Ends-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <h5>Category List</h5>
+            </div>
+            <div class="card-body">
+              <div class="dt-ext table-responsive">
+                <table class="display" id="custom-button">
+                  <thead>
+                    <tr>
+                      <!-- <th>#</th> -->
+                      <th>Category Name</th>
+                      <th>Sub Category Name</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for category in object_list %}
+                    <tr>
+                      <!-- <td>1</td> -->
+                      <td>{{category.category_name}}</td>
+                      <td>{{category.parent_category}}</td>
+                      <td>
+                        <a href="/admin/category/{{category.id}}/delete" data-catid="{{category.id}}"><i class="fa fa-trash"></i></a>
+                        <a href="#" class=""><i class="fa fa-eye"></i></a>
+                        <a href="/admin/category/{{category.id}}/update" data-id="{{category.id}}"><i class="fa fa-pencil"></i></a>
+                      </td>
+                    </tr>
+                    {%endfor%}
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Container-fluid Ends-->
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script>
+    $('.delete_cat').click(function(){
+      var catid =  $('.delete_cat').attr('data-catid')    
+      const csrftoken = `{% csrf_token %}`
+      console.log(csrftoken) 
+    $.ajax(
+    {
+        type:"GET",
+        url:'category/'+catid+'/delete',     
+        'contentType': 'application/json',
+          beforeSend: function(xhr) {
+              xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          },   
+        success: function( data ) 
+        {
+            alert(data)
+        }
+     })
+});
+    
+  </script>
+{% endblock content %}

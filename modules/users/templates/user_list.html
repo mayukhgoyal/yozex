@@ -1,0 +1,84 @@
+{% extends 'layout/inner.html' %}
+
+{% load static %}
+{% block content %}
+ <div class="page-body">
+          <div class="container-fluid">
+            <div class="page-header">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h3>User Management</h3>
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
+                    <li class="breadcrumb-item">User Management</li>
+                    <li class="breadcrumb-item active">User List</li>
+                  </ol>
+                </div>
+                <div class="col-sm-6">
+                  <!-- Bookmark Start-->
+                  <div class="bookmark">
+                    <ul>
+                      <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Tables"><i data-feather="inbox"></i></a></li>
+                      <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Chat"><i data-feather="message-square"></i></a></li>
+                      <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Icons"><i data-feather="command"></i></a></li>
+                      <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Learning"><i data-feather="layers"></i></a></li>
+                      <li><a href="javascript:void(0)"><i class="bookmark-search" data-feather="star"></i></a>
+                        <form class="form-inline search-form">
+                          <div class="form-group form-control-search">
+                            <input type="text" placeholder="Search..">
+                          </div>
+                        </form>
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- Bookmark Ends-->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid starts-->
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h5>User List</h5>
+                  </div>
+                  <div class="card-body">
+                    <div class="dt-ext table-responsive">
+                      <table class="display" id="custom-button">
+                        <thead>
+                          <tr>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Email</th>
+                            <th>Mobile</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in object_list %}
+                          <tr>
+                            <td>{{user.first_name}}</td>
+                            <td>{{user.last_name}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.user_profile.mobile}}</td>
+                            <td>                              
+                              <a href="javascript:void(0);"><i class="fa fa-eye"></i></a>
+                              <a href="javascript:void(0);"><i class="fa fa-pencil"></i></a>
+                            </td>
+                          </tr>  
+                          {%endfor%}                       
+                        </tbody>
+                        <tfoot>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid Ends-->
+        </div>
+  {% endblock content %}
