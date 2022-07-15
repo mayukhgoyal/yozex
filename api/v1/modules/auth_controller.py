@@ -12,8 +12,7 @@ class Login(APIView):
 		mobile = request.data.get('mobile',None)
 		if mobile:
 			users = User.objects.filter(mobile__iexact=mobile)
-			if users.exists():
-				#pdb.set_trace()
+			if users.exists():				
 				return response_handler(message='Please check your mobile for activation code.')
 			else:
 				message = "User not found"
