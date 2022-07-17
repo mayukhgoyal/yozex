@@ -143,16 +143,16 @@ REST_FRAMEWORK = {
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 #server database
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600)
+    #'default': dj_database_url.config(conn_max_age=600)
  
-    # {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'd6bt24t684e7o4',
-    #     'USER': 'hlloexkzwilghy',
-    #     'PASSWORD':'948f1879ac3db8f94b2726ec2e9a3d1ca6a8203298d627493e76b49d9155ade2',
-    #     'HOST':'ec2-3-223-169-166.compute-1.amazonaws.com',
-    #     'PORT':'5432',
-    # }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd4opk09rhkpjsl',
+        'USER': 'clstkftucfives',
+        'PASSWORD':'19d7ce595ade2a4cb11980eb7ef307e3a5905d6f278f90c8d79a4fc9067b03f8',
+        'HOST':'ec2-52-204-157-26.compute-1.amazonaws.com',
+        'PORT':'5432',
+    }
 }
 # DATABASES = {
 #     'default': {
